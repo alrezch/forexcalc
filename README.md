@@ -212,22 +212,33 @@ Configure how often data updates:
 ## 📁 Project Structure
 
 ```
-src/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx         # Root layout with providers
-│   ├── page.tsx           # Main application page
-│   └── globals.css        # Global styles
-├── components/             # Reusable UI components
-│   ├── ui/                # shadcn/ui components
-│   ├── calculators/       # Calculator implementations
-│   ├── Navigation.tsx     # Main navigation
-│   └── APIStatus.tsx      # API status dashboard
-├── lib/                    # Utility libraries
-│   ├── api/               # API services and hooks
-│   ├── providers.tsx      # React Query provider
-│   └── utils.ts           # Utility functions
-└── config/                 # Configuration files
-    └── api-config.ts      # API configuration
+forexcalc/
+├── src/                     # Source code
+│   ├── app/                # Next.js App Router
+│   │   ├── layout.tsx      # Root layout with providers
+│   │   ├── page.tsx        # Main application page
+│   │   └── globals.css     # Global styles
+│   ├── components/          # Reusable UI components
+│   │   ├── ui/             # shadcn/ui components
+│   │   ├── calculators/    # Calculator implementations
+│   │   ├── Navigation.tsx  # Main navigation
+│   │   └── APIStatus.tsx   # API status dashboard
+│   ├── lib/                 # Utility libraries
+│   │   ├── api/            # API services and hooks
+│   │   ├── providers.tsx   # React Query provider
+│   │   └── utils.ts        # Utility functions
+│   └── config/              # Configuration files
+│       └── api-config.ts   # API configuration
+├── .github/                 # GitHub Actions workflows
+│   └── workflows/           # CI/CD workflows
+├── Documentation/            # Project documentation
+│   ├── README.md            # Main project overview
+│   ├── FORMULAS.md          # Mathematical formulas and calculations
+│   ├── CONTRIBUTING.md      # Development guidelines
+│   ├── DEPLOYMENT.md        # Deployment instructions
+│   ├── API_SETUP_GUIDE.md   # API configuration guide
+│   └── TROUBLESHOOTING.md   # Common issues and solutions
+└── Configuration files       # Build and development configs
 ```
 
 ## 🌐 API Configuration
