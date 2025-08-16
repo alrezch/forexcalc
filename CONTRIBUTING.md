@@ -2,189 +2,247 @@
 
 Thank you for your interest in contributing to the Forex Calculator project! This document provides guidelines and information for contributors.
 
-## 🚀 Getting Started
+## 🚀 Project Overview
 
-### Prerequisites
-- Node.js (version 14 or higher)
-- npm or yarn package manager
-- Git
+Forex Calculator is a modern, Next.js-based application that provides comprehensive trading calculators with real-time market data integration. The project uses:
 
-### Setup
-1. Fork the repository
-2. Clone your fork locally:
+- **Next.js 14** with App Router
+- **shadcn/ui** components for consistent UI
+- **React Query** for data management
+- **TypeScript** for type safety
+- **Tailwind CSS** for styling
+
+## 📋 Prerequisites
+
+Before contributing, ensure you have:
+
+- **Node.js 18+** installed
+- **npm** or **yarn** package manager
+- **Git** for version control
+- Basic knowledge of **React**, **TypeScript**, and **Next.js**
+
+## 🔧 Development Setup
+
+1. **Fork and clone the repository**
    ```bash
    git clone https://github.com/YOUR_USERNAME/forexcalc.git
    cd forexcalc
    ```
-3. Install dependencies:
+
+2. **Install dependencies**
    ```bash
    npm install
    ```
-4. Start the development server:
+
+3. **Start development server**
    ```bash
-   npm start
+   npm run dev
    ```
 
-## 🛠️ Development
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-### Project Structure
+## 📁 Project Structure
+
 ```
 src/
-├── components/          # React components
-├── services/           # API services and utilities
-├── config/             # Configuration files
-├── App.js              # Main application component
-└── index.js            # Application entry point
+├── app/                    # Next.js App Router
+│   ├── layout.tsx         # Root layout with providers
+│   ├── page.tsx           # Main application page
+│   └── globals.css        # Global styles
+├── components/             # Reusable UI components
+│   ├── ui/                # shadcn/ui components
+│   ├── calculators/       # Calculator implementations
+│   ├── Navigation.tsx     # Main navigation
+│   └── APIStatus.tsx      # API status dashboard
+├── lib/                    # Utility libraries
+│   ├── api/               # API services and hooks
+│   ├── providers.tsx      # React Query provider
+│   └── utils.ts           # Utility functions
+└── config/                 # Configuration files
+    └── api-config.ts      # API configuration
 ```
-
-### Code Style
-- Use functional components with hooks
-- Follow React best practices
-- Use styled-components for styling
-- Maintain consistent naming conventions
-- Add comments for complex logic
-
-### Testing
-- Test your changes locally before submitting
-- Ensure all calculators work correctly
-- Test API integrations
-- Verify responsive design on different screen sizes
 
 ## 🎯 Areas for Contribution
 
-### Features
-- New calculator types
-- Additional currency pairs
-- Enhanced UI components
-- Performance optimizations
+### High Priority
+- **Bug fixes** and error handling improvements
+- **Performance optimizations** for data fetching
+- **Accessibility improvements** for UI components
+- **Mobile responsiveness** enhancements
 
-### Bug Fixes
-- API integration issues
-- UI/UX improvements
-- Calculation accuracy
-- Cross-browser compatibility
+### Medium Priority
+- **New calculator types** (Fibonacci, Elliott Wave, etc.)
+- **Additional currency pairs** and instruments
+- **Enhanced error messages** and user feedback
+- **Unit tests** for components and utilities
 
-### Documentation
-- README improvements
-- API documentation
-- Code comments
-- Tutorial guides
+### Low Priority
+- **Documentation improvements**
+- **Code style consistency**
+- **Performance monitoring** and analytics
+- **Internationalization** support
 
-## 📝 Submitting Changes
+## 🧪 Testing
 
-### 1. Create a Branch
+### Running Tests
 ```bash
-git checkout -b feature/your-feature-name
-# or
-git checkout -b fix/your-bug-fix
+# Type checking
+npm run type-check
+
+# Linting
+npm run lint
+
+# Build verification
+npm run build
 ```
 
-### 2. Make Your Changes
-- Write clear, focused commits
-- Test your changes thoroughly
-- Update documentation if needed
+### Testing Guidelines
+- Ensure all TypeScript errors are resolved
+- Verify ESLint passes without warnings
+- Test on multiple screen sizes
+- Verify API integrations work correctly
 
-### 3. Commit Your Changes
-```bash
-git add .
-git commit -m "feat: add new calculator type"
-git commit -m "fix: resolve API timeout issue"
-git commit -m "docs: update README with new features"
-```
+## 📝 Code Style Guidelines
 
-### 4. Push and Create Pull Request
-```bash
-git push origin feature/your-feature-name
-```
+### TypeScript
+- Use strict TypeScript configuration
+- Define proper interfaces for all props
+- Avoid `any` types when possible
+- Use meaningful type names
 
-Then create a Pull Request on GitHub with:
-- Clear description of changes
-- Screenshots if UI changes
-- Testing instructions
-- Any breaking changes noted
+### React Components
+- Use functional components with hooks
+- Follow the `'use client'` directive for client components
+- Implement proper error boundaries
+- Use React Query for data fetching
+
+### Styling
+- Use Tailwind CSS utility classes
+- Follow shadcn/ui component patterns
+- Maintain consistent spacing and typography
+- Ensure responsive design principles
+
+### File Naming
+- Use PascalCase for components: `LotCalculator.tsx`
+- Use camelCase for utilities: `utils.ts`
+- Use kebab-case for CSS files: `globals.css`
+
+## 🔄 Git Workflow
+
+1. **Create a feature branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+2. **Make your changes**
+   - Write clear, descriptive commit messages
+   - Keep commits focused and atomic
+   - Test your changes thoroughly
+
+3. **Push your branch**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+4. **Create a Pull Request**
+   - Provide a clear description of changes
+   - Include screenshots if UI changes
+   - Reference any related issues
 
 ## 📋 Pull Request Guidelines
 
 ### Before Submitting
 - [ ] Code follows project style guidelines
-- [ ] All tests pass
-- [ ] Documentation is updated
-- [ ] No console errors
-- [ ] Responsive design maintained
+- [ ] All tests pass (`npm run type-check`, `npm run lint`)
+- [ ] Build succeeds (`npm run build`)
+- [ ] Changes are tested in development
 
 ### PR Description Template
 ```markdown
 ## Description
 Brief description of what this PR accomplishes
 
-## Type of Change
-- [ ] Bug fix
-- [ ] New feature
-- [ ] Documentation update
-- [ ] Performance improvement
+## Changes Made
+- [ ] Feature A added
+- [ ] Bug B fixed
+- [ ] Component C updated
 
 ## Testing
-- [ ] Tested locally
-- [ ] All calculators working
-- [ ] API integration tested
-- [ ] Responsive design verified
-
-## Screenshots (if applicable)
-Add screenshots for UI changes
-
-## Additional Notes
-Any additional information or context
-```
-
-## 🐛 Reporting Issues
-
-### Bug Report Template
-```markdown
-## Bug Description
-Clear description of the bug
-
-## Steps to Reproduce
-1. Go to '...'
-2. Click on '...'
-3. See error
-
-## Expected Behavior
-What should happen
-
-## Actual Behavior
-What actually happens
-
-## Environment
-- Browser: [e.g. Chrome, Safari]
-- OS: [e.g. macOS, Windows]
-- Version: [e.g. 1.0.0]
+- [ ] Tested on desktop
+- [ ] Tested on mobile
+- [ ] Verified API integration
+- [ ] Checked accessibility
 
 ## Screenshots
-If applicable, add screenshots
+(if applicable)
 
-## Additional Context
-Any other context about the problem
+## Related Issues
+Closes #123
 ```
+
+## 🐛 Bug Reports
+
+When reporting bugs, please include:
+
+1. **Clear description** of the issue
+2. **Steps to reproduce** the problem
+3. **Expected vs actual behavior**
+4. **Environment details** (browser, OS, device)
+5. **Screenshots** or error messages
+6. **Console logs** if applicable
+
+## 💡 Feature Requests
+
+For new features, please:
+
+1. **Describe the feature** clearly
+2. **Explain the use case** and benefits
+3. **Provide examples** of similar implementations
+4. **Consider implementation complexity**
+5. **Discuss potential alternatives**
+
+## 🚫 What Not to Contribute
+
+- **Breaking changes** without discussion
+- **Major refactoring** without consensus
+- **New dependencies** without justification
+- **Style changes** that don't improve UX
 
 ## 🤝 Community Guidelines
 
-- Be respectful and inclusive
-- Help other contributors
-- Provide constructive feedback
-- Follow the project's code of conduct
+- **Be respectful** and constructive
+- **Help others** learn and contribute
+- **Provide feedback** on others' contributions
+- **Follow the project's code of conduct**
 
-## 📞 Getting Help
+## 📚 Learning Resources
 
-- Open an issue for bugs or feature requests
-- Join discussions in existing issues
-- Check the README for setup instructions
-- Review the API setup guide for configuration help
+- [Next.js Documentation](https://nextjs.org/docs)
+- [shadcn/ui Components](https://ui.shadcn.com/)
+- [React Query Guide](https://tanstack.com/query/latest)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 
-## 🎉 Recognition
+## 🏆 Recognition
 
 Contributors will be recognized in:
 - Project README
 - Release notes
+- Contributor hall of fame
 - GitHub contributors list
 
-Thank you for contributing to making the Forex Calculator better for everyone! 🚀
+## 📞 Getting Help
+
+- **GitHub Issues**: For bugs and feature requests
+- **GitHub Discussions**: For questions and ideas
+- **Pull Request Reviews**: For code feedback
+- **Documentation**: Check existing guides first
+
+## 🎉 Thank You!
+
+Your contributions help make Forex Calculator better for everyone. Whether you're fixing bugs, adding features, or improving documentation, your work is appreciated!
+
+---
+
+**Happy coding! 🚀**
