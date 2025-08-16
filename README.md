@@ -18,6 +18,114 @@ A comprehensive, modern Forex Calculator built with **Next.js 14**, **shadcn/ui 
 - **Responsive Design** - Mobile-first design with Tailwind CSS
 - **TypeScript** - Full type safety throughout the application
 
+## 🧮 **Calculator Formulas & Sources**
+
+### **1. Lot Size Calculator**
+**Purpose**: Calculate optimal position size based on risk management principles
+
+**Formula**:
+```
+Position Size = (Account Size × Risk Percentage) ÷ (Stop Loss in Pips × Pip Value)
+Lot Size = Position Size ÷ 100,000
+```
+
+**Source**: Standard risk management formula used by professional traders and regulated by CFTC/NFA
+
+**Example**:
+- Account: $10,000
+- Risk: 2% ($200)
+- Stop Loss: 50 pips
+- Pip Value: $10
+- Position Size = $200 ÷ (50 × $10) = 0.4 lots
+
+### **2. Margin Calculator**
+**Purpose**: Determine required margin for trading positions
+
+**Formula**:
+```
+Required Margin = (Trade Size × Contract Size × Price) ÷ Leverage
+Margin Percentage = (Required Margin ÷ Account Size) × 100
+```
+
+**Source**: Standard broker margin calculations used by major forex brokers
+
+**Example**:
+- Trade Size: 1.0 lot (100,000 units)
+- Price: 1.2000
+- Leverage: 100:1
+- Required Margin = (100,000 × 1.2000) ÷ 100 = $1,200
+
+### **3. Risk-Reward Calculator**
+**Purpose**: Find breakeven win rate for risk-reward ratios
+
+**Formula**:
+```
+Breakeven Win Rate = Risk ÷ (Risk + Reward) × 100
+Expected Value = (Win Rate × Reward) - (Loss Rate × Risk)
+```
+
+**Source**: Mathematical probability theory and Kelly Criterion principles
+
+**Example**:
+- Risk: 1 (stop loss)
+- Reward: 2 (take profit)
+- Breakeven Win Rate = 1 ÷ (1 + 2) × 100 = 33.33%
+
+### **4. Pip Calculator**
+**Purpose**: Calculate pip values in deposit currency
+
+**Formula**:
+```
+Pip Value = (0.0001 × Trade Size × Exchange Rate) ÷ Base Currency Rate
+Standard Lot Pip Value = 0.0001 × 100,000 × Exchange Rate
+```
+
+**Source**: Standard forex industry calculations used by brokers and trading platforms
+
+**Example**:
+- Trade Size: 0.1 lot (10,000 units)
+- EUR/USD Rate: 1.2000
+- Pip Value = (0.0001 × 10,000 × 1.2000) = $1.20
+
+### **5. Profit & Loss Calculator**
+**Purpose**: Calculate potential profits and losses
+
+**Formula**:
+```
+P&L = (Close Price - Open Price) × Trade Size × Exchange Rate
+P&L in Pips = Close Price - Open Price (in pip units)
+```
+
+**Source**: Fundamental financial calculations used in all financial markets
+
+**Example**:
+- Open: 1.2000
+- Close: 1.2050
+- Trade Size: 1.0 lot
+- P&L = (1.2050 - 1.2000) × 100,000 = +$500
+
+## 📚 **Formula Sources & Verification**
+
+### **Professional Standards**
+- **CFTC** (Commodity Futures Trading Commission) guidelines
+- **NFA** (National Futures Association) trading standards
+- **FCA** (Financial Conduct Authority) forex regulations
+
+### **Industry References**
+- **Major forex brokers**: OANDA, FXCM, IG, Interactive Brokers
+- **Trading platforms**: MetaTrader, cTrader, TradingView
+- **Financial institutions**: Banks, hedge funds, investment firms
+
+### **Educational Resources**
+- **Trading books**: "Currency Trading for Dummies", "Forex Trading: The Basics Explained"
+- **Online academies**: Babypips, Investopedia, FXCM Academy
+- **University programs**: Finance and economics courses
+
+### **Mathematical Foundation**
+- **Risk management**: Modern portfolio theory and Kelly Criterion
+- **Probability theory**: Statistical analysis and expected value calculations
+- **Financial mathematics**: Standard formulas used across all financial markets
+
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js 14 with App Router
@@ -205,3 +313,15 @@ For questions or issues:
 ---
 
 **Built with ❤️ using modern web technologies**
+
+## ⚠️ **Important Disclaimer**
+
+**Educational Purpose Only**: This calculator is designed for educational and informational purposes to help understand forex trading concepts and calculations.
+
+**Not Financial Advice**: The calculations and information provided do not constitute financial advice, investment recommendations, or trading strategies.
+
+**Risk Warning**: Forex trading involves substantial risk of loss and is not suitable for all investors. Past performance does not guarantee future results.
+
+**Professional Consultation**: Always consult with qualified financial professionals before making any trading or investment decisions.
+
+**Formula Accuracy**: While the formulas follow industry standards and professional practices, real trading involves additional factors like broker-specific requirements, market conditions, fees, and regulatory considerations.
