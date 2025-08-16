@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Build and Test
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-deploy:
+  build-and-test:
     runs-on: ubuntu-latest
     
     steps:
@@ -26,22 +26,19 @@ jobs:
     - name: Build
       run: npm run build
       
-    - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/main'
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
-        cname: # Add your custom domain here if you have one
-        
     - name: Build Status
-      if: github.event_name == 'pull_request'
       run: |
-        echo "Build completed successfully!"
-        echo "This is a PR build - no deployment to production"
+        echo "✅ Build completed successfully!"
+        echo "📦 Production build created in ./build folder"
+        echo "🚀 Manual deployment available with: npm run deploy"
         
-    - name: Deployment Status
-      if: github.ref == 'refs/heads/main'
+    - name: Test Build Output
       run: |
-        echo "Deployment completed successfully!"
-        echo "Your app is now live on GitHub Pages"
+        if [ -d "build" ]; then
+          echo "✅ Build folder exists"
+          echo "📁 Build contents:"
+          ls -la build/
+        else
+          echo "❌ Build folder not found"
+          exit 1
+        fi
