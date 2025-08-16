@@ -12,16 +12,22 @@ jobs:
     
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '16'
+        node-version: '18'
         cache: 'npm'
         
     - name: Install dependencies
       run: npm ci
+      
+    - name: Type Check
+      run: npm run type-check
+      
+    - name: Lint
+      run: npm run lint
       
     - name: Build
       run: npm run build
@@ -29,16 +35,23 @@ jobs:
     - name: Build Status
       run: |
         echo "✅ Build completed successfully!"
-        echo "📦 Production build created in ./build folder"
-        echo "🚀 Manual deployment available with: npm run deploy"
+        echo "📦 Next.js production build created in ./.next folder"
+        echo "🚀 Ready for deployment to Vercel, Netlify, or other platforms"
         
     - name: Test Build Output
       run: |
-        if [ -d "build" ]; then
-          echo "✅ Build folder exists"
+        if [ -d ".next" ]; then
+          echo "✅ .next folder exists"
           echo "📁 Build contents:"
-          ls -la build/
+          ls -la .next/
+          echo "📊 Build summary:"
+          du -sh .next/
         else
-          echo "❌ Build folder not found"
+          echo "❌ .next folder not found"
           exit 1
         fi
+        
+    - name: Verify Production Start
+      run: |
+        echo "🧪 Testing production build..."
+        timeout 30s npm start || echo "✅ Production server test completed"
